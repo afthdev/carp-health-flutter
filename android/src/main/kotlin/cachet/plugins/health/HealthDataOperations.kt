@@ -55,17 +55,12 @@ class HealthDataOperations(
         }
 
         scope.launch {
-            try {
-                result.success(
+            result.success(
                     healthConnectClient
-                        .permissionController
-                        .getGrantedPermissions()
-                        .containsAll(permList),
-                )
-            } catch (e: Exception) {
-                Log.e("FLUTTER_HEALTH::ERROR", "hasPermissions failed: ${e.message}")
-                result.success(false) // gracefully return false instead of crashing
-            }
+                            .permissionController
+                            .getGrantedPermissions()
+                            .containsAll(permList),
+            )
         }
     }
 
@@ -127,17 +122,12 @@ class HealthDataOperations(
      */
     fun isHealthDataHistoryAuthorized(call: MethodCall, result: Result) {
         scope.launch {
-            try {
-                result.success(
+            result.success(
                     healthConnectClient
-                        .permissionController
-                        .getGrantedPermissions()
-                        .containsAll(listOf(PERMISSION_READ_HEALTH_DATA_HISTORY)),
-                )
-            } catch (e: Exception) {
-                Log.e("FLUTTER_HEALTH::ERROR", "isHealthDataHistoryAuthorized failed: ${e.message}")
-                result.success(false)
-            }
+                            .permissionController
+                            .getGrantedPermissions()
+                            .containsAll(listOf(PERMISSION_READ_HEALTH_DATA_HISTORY)),
+            )
         }
     }
 
@@ -167,17 +157,12 @@ class HealthDataOperations(
      */
     fun isHealthDataInBackgroundAuthorized(call: MethodCall, result: Result) {
         scope.launch {
-            try {
-                result.success(
+            result.success(
                     healthConnectClient
-                        .permissionController
-                        .getGrantedPermissions()
-                        .containsAll(listOf(PERMISSION_READ_HEALTH_DATA_IN_BACKGROUND)),
-                )
-            } catch (e: Exception) {
-                Log.e("FLUTTER_HEALTH::ERROR", "isHealthDataInBackgroundAuthorized failed: ${e.message}")
-                result.success(false)
-            }
+                            .permissionController
+                            .getGrantedPermissions()
+                            .containsAll(listOf(PERMISSION_READ_HEALTH_DATA_IN_BACKGROUND)),
+            )
         }
     }
 
